@@ -16,8 +16,11 @@ public class UserRepository {
 
 
     public boolean findUser(User user) {
+        if (user == null)
+            return false;
+
         for (User userInBD : users) {
-            if (user != null && userInBD.equals(user))
+            if (userInBD != null && userInBD.equals(user))
                 return true;
         }
 
