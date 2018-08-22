@@ -15,23 +15,23 @@ public class UserRepository {
     }
 
 
-    public boolean findUser(User user) {
+    public User findUser(User user) {
         if (user == null)
-            return false;
+            return null;
 
         for (User userInBD : users) {
             if (userInBD != null && userInBD.equals(user))
-                return true;
+                return userInBD;
         }
 
-        return false;
+        return null;
     }
 
     public User save(User user) {
         if (user == null)
             return null;
 
-        if (findUser(user))
+        if (findUser(user) != null)
             return null;
 
         int j = 0;
