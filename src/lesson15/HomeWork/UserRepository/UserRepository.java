@@ -52,7 +52,7 @@ public class UserRepository {
 
         int j = 0;
         for (User userInBd : users) {
-            if(userInBd != null && user.equals(userInBd)) {
+            if(user.equals(userInBd)) {
                 users[j] = user;
                 return user;
             }
