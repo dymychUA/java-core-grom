@@ -20,7 +20,7 @@ public class UserRepository {
             return null;
 
         for (User userInBD : users) {
-            if (userInBD != null && userInBD.equals(user))
+            if (user.equals(userInBD))
                 return userInBD;
         }
 
@@ -54,7 +54,7 @@ public class UserRepository {
         for (User userInBd : users) {
             if(user.equals(userInBd)) {
                 users[j] = user;
-                return user;
+                return users[j];
             }
             j++;
         }
