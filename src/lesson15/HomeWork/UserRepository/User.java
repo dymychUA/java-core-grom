@@ -51,6 +51,11 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, sessionId);
+        int result = (int) id;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + sessionId.hashCode();
+        return result;
+
+        //return Objects.hash(id, name, sessionId);
     }
 }
