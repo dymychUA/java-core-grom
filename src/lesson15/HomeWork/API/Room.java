@@ -1,6 +1,7 @@
 package lesson15.HomeWork.API;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Room {
     private long id;
@@ -61,5 +62,23 @@ public class Room {
                 ", hotelName='" + hotelName + '\'' +
                 ", cityName='" + cityName + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return id == room.id &&
+                price == room.price &&
+                persons == room.persons &&
+                Objects.equals(dateAvailableFrom, room.dateAvailableFrom) &&
+                Objects.equals(hotelName, room.hotelName) &&
+                Objects.equals(cityName, room.cityName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, price, persons, dateAvailableFrom, hotelName, cityName);
     }
 }

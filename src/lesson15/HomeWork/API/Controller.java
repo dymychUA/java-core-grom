@@ -33,17 +33,6 @@ public class Controller {
         return api.findRooms(price, persons, city, hotel);
     }
 
-    private boolean roomsAreEqual(Room room1, Room room2) {
-        if(room1 == null || room2 == null)
-            return false;
-        if (room1.getPrice() == room2.getPrice() && room1.getPersons() == room2.getPersons() &&
-            room1.getHotelName().equals(room2.getHotelName()) && room1.getCityName().equals(room2.getCityName()) &&
-            room1.getId() != room2.getId() && room1.getDateAvailableFrom() != room2.getDateAvailableFrom())
-            return true;
-
-        return false;
-    }
-
     public Room[] check(API api1, API api2) {
         if (api1 == null || api2 == null)
             return null;
@@ -54,7 +43,7 @@ public class Controller {
 
         for (int i = 0; i < roomsAPI1.length; i++) {
             for (int j = 0; j < roomsAPI2.length; j++) {
-                if (roomsAreEqual(roomsAPI1[i], roomsAPI2[j]))
+                if (roomsAPI1[i].equals(roomsAPI2[j]))
                     size++;
             }
         }
@@ -63,7 +52,7 @@ public class Controller {
         Room[] rooms = new Room[size];
         for (int i = 0; i < roomsAPI1.length; i++) {
             for (int j = 0; j < roomsAPI2.length; j++) {
-                if (roomsAreEqual(roomsAPI1[i], roomsAPI2[j])) {
+                if (roomsAPI1[i].equals(roomsAPI2[j])) {
                     rooms[index] = roomsAPI1[i];
                     index++;
                 }
