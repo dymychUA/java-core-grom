@@ -52,8 +52,10 @@ public class UserRepository {
 
         int j = 0;
         for (User userInBd : users) {
-            if (userInBd == null)
+            if (userInBd == null) {
+                j++;
                 continue;
+            }
             if(user.equals(userInBd)) {
                 users[j] = user;
                 return user;
