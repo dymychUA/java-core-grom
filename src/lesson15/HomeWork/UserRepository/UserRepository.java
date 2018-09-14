@@ -52,7 +52,8 @@ public class UserRepository {
 
         User userInBD = findUser(user);
         if (userInBD != null) {
-            userInBD = user;
+            //userInBD = user;
+            save(userInBD);
             return userInBD;
         }
         /*
