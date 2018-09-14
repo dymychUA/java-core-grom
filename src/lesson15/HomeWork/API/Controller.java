@@ -41,19 +41,13 @@ public class Controller {
         Room[] roomsAPI1 = api1.getAll();
         Room[] roomsAPI2 = api2.getAll();
 
-        if (roomsAPI1 == null || roomsAPI2== null)
-            return null;
-
-        if (roomsAPI1.length == 0 || roomsAPI2.length == 0)
-            return null;
-
-        for (int i = 0; i < roomsAPI1.length; i++) {
-            if (roomsAPI1[i] == null)
+        for (Room room1 : roomsAPI1) {
+            if (room1 == null)
                 continue;
-            for (int j = 0; j < roomsAPI2.length; j++) {
-                if (roomsAPI2[j] == null)
+            for (Room room2 : roomsAPI2) {
+                if (room2 == null)
                     continue;
-                if (roomsAPI1[i].equals(roomsAPI2[j]))
+                if (room1.equals(room2))
                     size++;
             }
         }
@@ -63,14 +57,14 @@ public class Controller {
 
         int index = 0;
         Room[] rooms = new Room[size];
-        for (int i = 0; i < roomsAPI1.length; i++) {
-            if (roomsAPI1[i] == null)
+        for (Room room1 : roomsAPI1) {
+            if (room1 == null)
                 continue;
-            for (int j = 0; j < roomsAPI2.length; j++) {
-                if (roomsAPI2[j] == null)
+            for (Room room2 : roomsAPI2) {
+                if (room2 == null)
                     continue;
-                if (roomsAPI1[i].equals(roomsAPI2[j])) {
-                    rooms[index] = roomsAPI1[i];
+                if (room1.equals(room2)) {
+                    rooms[index] = room1;
                     index++;
                 }
             }
