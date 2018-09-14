@@ -34,6 +34,9 @@ public class Controller {
     }
 
     public Room[] check(API api1, API api2) {
+        if (api1 == null || api2 == null)
+            return null;
+
         int size = 0;
         Room[] roomsAPI1 = api1.getAll();
         Room[] roomsAPI2 = api2.getAll();
@@ -55,7 +58,7 @@ public class Controller {
             if (roomsAPI1[i] == null)
                 break;
             for (int j = 0; j < roomsAPI2.length; j++) {
-                if (roomsAPI1[j] == null)
+                if (roomsAPI2[j] == null)
                     break;
                 if (roomsAPI1[i].equals(roomsAPI2[j])) {
                     rooms[index] = roomsAPI1[i];
