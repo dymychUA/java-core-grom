@@ -69,10 +69,8 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return id != room.id &&
-                price == room.price &&
+        return  price == room.price &&
                 persons == room.persons &&
-                !Objects.equals(dateAvailableFrom, room.dateAvailableFrom) &&
                 Objects.equals(hotelName, room.hotelName) &&
                 Objects.equals(cityName, room.cityName);
     }
