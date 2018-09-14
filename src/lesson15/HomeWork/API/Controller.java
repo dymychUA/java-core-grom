@@ -41,6 +41,9 @@ public class Controller {
         Room[] roomsAPI1 = api1.getAll();
         Room[] roomsAPI2 = api2.getAll();
 
+        if (roomsAPI1.length == 0 || roomsAPI2.length == 0)
+            return null;
+
         for (int i = 0; i < roomsAPI1.length; i++) {
             if (roomsAPI1[i] == null)
                 continue;
