@@ -52,6 +52,9 @@ public class Controller {
             }
         }
 
+        if (size == 0)
+            return null;
+
         int index = 0;
         Room[] rooms = new Room[size];
         for (int i = 0; i < roomsAPI1.length; i++) {
