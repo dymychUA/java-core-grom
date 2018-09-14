@@ -39,7 +39,11 @@ public class Controller {
         Room[] roomsAPI2 = api2.getAll();
 
         for (int i = 0; i < roomsAPI1.length; i++) {
+            if (roomsAPI1[i] == null)
+                break;
             for (int j = 0; j < roomsAPI2.length; j++) {
+                if (roomsAPI2[j] == null)
+                    break;
                 if (roomsAPI1[i].equals(roomsAPI2[j]))
                     size++;
             }
@@ -48,7 +52,11 @@ public class Controller {
         int index = 0;
         Room[] rooms = new Room[size];
         for (int i = 0; i < roomsAPI1.length; i++) {
+            if (roomsAPI1[i] == null)
+                break;
             for (int j = 0; j < roomsAPI2.length; j++) {
+                if (roomsAPI1[j] == null)
+                    break;
                 if (roomsAPI1[i].equals(roomsAPI2[j])) {
                     rooms[index] = roomsAPI1[i];
                     index++;
