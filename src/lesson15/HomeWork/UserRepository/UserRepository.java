@@ -53,7 +53,7 @@ public class UserRepository {
         User userInBD = findUser(user);
         if (userInBD != null) {
             userInBD = user;
-            return user;
+            return userInBD;
         }
         /*
         int j = 0;
