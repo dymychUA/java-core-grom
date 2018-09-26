@@ -61,8 +61,9 @@ public class UserRepository {
         int j = 0;
         for (User userInBd : users) {
             if(user.equals(userInBd)) {
-                users[j] = user;
-                return user;
+                //users[j] = user;
+                save(userInBd);
+                return userInBd;
             }
             j++;
         }
