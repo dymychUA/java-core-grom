@@ -31,6 +31,7 @@ public class StringMethods {
 
         System.out.println(" test a".trim());
 
+        System.out.println(phrase.substring(5));
         System.out.println(phrase.substring(5, 10).trim());
 
         System.out.println(test.toUpperCase());
