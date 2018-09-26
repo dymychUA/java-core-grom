@@ -40,11 +40,6 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-
-//        if (!name.equals(user.name)) return false;
-//        if (!sessionId.equals(user.sessionId)) return false;
-//        return id == user.id;
-
         return id == user.id &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(sessionId, user.sessionId);
@@ -52,11 +47,6 @@ public class User {
 
     @Override
     public int hashCode() {
-//        int result = (int) id;
-//        result = 31 * result + name.hashCode();
-//        result = 31 * result + sessionId.hashCode();
-//        return result;
-
         return Objects.hash(id, name, sessionId);
     }
 }
