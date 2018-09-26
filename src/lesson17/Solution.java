@@ -88,7 +88,7 @@ public class Solution {
 
         String[] protocols = {"http://", "https://"};
         String[] domains = {".com", ".org", ".net"};
-        String[] symbols = {"$", "%", "&", "&"};
+        String[] symbols = {"$", "%", "&", "?"};
 
         return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbols(address, symbols);
     }
