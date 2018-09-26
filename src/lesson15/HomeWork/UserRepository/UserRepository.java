@@ -49,21 +49,15 @@ public class UserRepository {
         if (user == null)
             return null;
 
-        /*
-        User userInBD = findUser(user);
-        if (userInBD != null) {
-            //userInBD = user;
-            save(userInBD);
-            return userInBD;
-        }
-        */
-
         int j = 0;
         for (User userInBd : users) {
-            if(user.equals(userInBd)) {
-                //users[j] = user;
-                save(userInBd);
-                return userInBd;
+            if(userInBd == null) {
+                j++;
+                continue;
+            }
+            if(user.getId() == userInBd.getId() && !user.equals(userInBd)) {
+                users[j] = user;
+                return user;
             }
             j++;
         }
