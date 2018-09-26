@@ -55,7 +55,7 @@ public class UserRepository {
                 j++;
                 continue;
             }
-            if(user.getId() == userInBd.getId() && !user.equals(userInBd)) {
+            if(user.getId() == userInBd.getId() && user.hashCode() != userInBd.hashCode()) {
                 users[j] = user;
                 return user;
             }
