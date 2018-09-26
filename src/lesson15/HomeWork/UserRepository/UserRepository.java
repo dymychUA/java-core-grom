@@ -45,18 +45,20 @@ public class UserRepository {
         return null;
     }
 
-    //part 5
     public User update(User user) {
         if (user == null)
             return null;
 
+        /*
         User userInBD = findUser(user);
         if (userInBD != null) {
             //userInBD = user;
             save(userInBD);
             return userInBD;
         }
-        /*
+        */
+
+
         int j = 0;
         for (User userInBd : users) {
             if (userInBd == null) {
@@ -68,7 +70,7 @@ public class UserRepository {
                 return user;
             }
             j++;
-        }*/
+        }
 
         return null;
     }
