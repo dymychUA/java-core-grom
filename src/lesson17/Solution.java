@@ -89,7 +89,13 @@ public class Solution {
         String[] protocols = {"http://", "https://"};
         String[] domains = {".com", ".org", ".net"};
 
-        return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbols(address);
+        String domainName = address;
+        for (String protocol : protocols)
+            domainName = domainName.replace(protocol, "");
+        for (String domain : domains)
+            domainName = domainName.replace(domain, "");
+
+        return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbols(domainName);
     }
 
 
