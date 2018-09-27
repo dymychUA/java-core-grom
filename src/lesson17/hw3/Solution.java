@@ -3,7 +3,7 @@ package lesson17.hw3;
 public class Solution {
     public static void main(String[] args) {
 
-        String input = "Test input string input demo in input in";
+        String input = " Test       input string   input  demo in  input   i#n  in in   ";
 
         //3
         System.out.println(mostCountedWord(input));
@@ -17,6 +17,9 @@ public class Solution {
             return null;
 
         String[] words = deleteNotWords(deleteDuplicates(input)).split(" ");
+        if (words.length == 0)
+            return null;
+
         int[] counters = countDuplicates(input, words);
 
         int maxIndex = 0;
