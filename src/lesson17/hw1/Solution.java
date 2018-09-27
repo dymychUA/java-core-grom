@@ -3,7 +3,7 @@ package lesson17.hw1;
 public class Solution {
     public static void main(String[] args) {
 
-        String input = "Test input string input demo in input in";
+        String input = "Test input1 string input demo in i$nput in";
 
         //1
         System.out.println(countWords(input));
@@ -11,24 +11,14 @@ public class Solution {
 
     //1
     public static int countWords(String input) {
-        return deleteNotWords(input).split(" ").length;
-    }
 
-    public static String deleteNotWords(String input) {
+        int res = 0;
 
         String[] words = input.split(" ");
+
         for (int i = 0; i < words.length; i++) {
-            if (!validateSymbols(words[i]))
-                words[i] = "";
-        }
-
-        String res = "";
-
-        for (String word : words) {
-            res += word;
-
-            if (! word.isEmpty())
-                res += " ";
+            if (validateSymbols(words[i]))
+                res++;
         }
 
         return res;
