@@ -67,7 +67,7 @@ public class Solution {
         if (input == null || input.equals(""))
             return null;
 
-        String[] words = deleteDuplicates(input).split(" ");
+        String[] words = deleteNotWords(deleteDuplicates(input)).split(" ");
         int[] counters = countDuplicates(input, words);
 
         int maxIndex = 0;
