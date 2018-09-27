@@ -53,7 +53,7 @@ public class Solution {
         char[] arr = input.toCharArray();
 
         for (char symbol : arr) {
-            if(!Character.isLetterOrDigit(symbol))
+            if(!Character.isLetter(symbol))
                 return false;
         }
 
