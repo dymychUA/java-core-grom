@@ -39,7 +39,7 @@ public class Solution {
 
     public static int[] countDuplicates(String input, String[] words) {
 
-        String[] strings = input.split(" ");
+        String[] strings = input.trim().split(" ");
         int[] res = new int[words.length];
 
         for (String string : strings) {
