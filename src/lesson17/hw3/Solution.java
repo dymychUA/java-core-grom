@@ -4,9 +4,11 @@ public class Solution {
     public static void main(String[] args) {
 
         String input = " Test       input string   input  demo in  input   i#n  in in   ";
+        String input2 = " lk34 sdf( *()_ sd;f   789 -   ";
 
         //3
         System.out.println(mostCountedWord(input));
+        System.out.println(mostCountedWord(input2));
 
     }
 
@@ -16,7 +18,7 @@ public class Solution {
         if (input.trim().isEmpty())
             return null;
 
-        String[] words = deleteNotWords(deleteDuplicates(input)).split(" ");
+        String[] words = deleteNotWords(deleteDuplicates(input.trim())).split(" ");
         if (words.length == 0)
             return null;
 
