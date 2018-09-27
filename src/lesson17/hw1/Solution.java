@@ -26,7 +26,7 @@ public class Solution {
 
     public static boolean validateSymbols(String input) {
 
-        char[] arr = input.toCharArray();
+        char[] arr = input.trim().toCharArray();
 
         for (char symbol : arr) {
             if(!Character.isLetter(symbol))
