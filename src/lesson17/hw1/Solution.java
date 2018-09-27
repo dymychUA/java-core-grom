@@ -3,7 +3,7 @@ package lesson17.hw1;
 public class Solution {
     public static void main(String[] args) {
 
-        String input = "Test input1 string input demo in i$nput in";
+        String input = " Test input1 _ string input demo in i$nput in q ";
 
         //1
         System.out.println(countWords(input));
