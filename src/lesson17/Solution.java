@@ -23,7 +23,7 @@ public class Solution {
 
     //1
     public static int countWords(String input) {
-        return input.split(" ").length;
+        return deleteNotWords(input).split(" ").length;
     }
 
 
@@ -88,9 +88,8 @@ public class Solution {
 
         String[] protocols = {"http://", "https://"};
         String[] domains = {".com", ".org", ".net"};
-        String[] symbols = {"$", "%", "&", "?"};
 
-        return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbols(address, symbols);
+        return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbols(address);
     }
 
 
@@ -132,6 +131,26 @@ public class Solution {
         return res;
     }
 
+    public static String deleteNotWords(String input) {
+
+        String[] words = input.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            if (!validateSymbols(words[i]))
+                words[i] = "";
+        }
+
+        String res = "";
+
+        for (String word : words) {
+            res += word;
+
+            if (! word.isEmpty())
+                res += " ";
+        }
+
+        return res;
+    }
+
     public static boolean validateProtocol(String address, String[] protocols) {
 
         for (String protocol : protocols) {
@@ -152,12 +171,19 @@ public class Solution {
         return false;
     }
 
-    public static boolean validateSymbols(String address, String[] symbols) {
+    public static boolean validateSymbols(String input) {
 
-        for (String symbol : symbols) {
-            if (address.contains(symbol))
+        char[] arr = input.toCharArray();
+
+        for (char symbol : arr) {
+            if(!Character.isLetter(symbol))
                 return false;
         }
+
+        /*for (String symbol : symbols) {
+            if (input.contains(symbol))
+                return false;
+        }*/
 
         return true;
     }
