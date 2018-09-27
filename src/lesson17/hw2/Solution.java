@@ -18,11 +18,11 @@ public class Solution {
         if (input.equals(""))
             return "";
 
-        String[] words = deleteNotWords(input).split(" ");
+        String[] words = input.split(" ");
         String res = words[0];
 
         for (String word : words) {
-            if (res.length() < word.length())
+            if (validateSymbols(word) && res.length() < word.length())
                 res = word;
         }
 
@@ -34,33 +34,12 @@ public class Solution {
         if (input.equals(""))
             return "";
 
-        String[] words = deleteNotWords(input).split(" ");
+        String[] words = input.split(" ");
         String res = words[0];
 
         for (String word : words) {
-            if (res.length() > word.length())
+            if (validateSymbols(word) && res.length() > word.length())
                 res = word;
-        }
-
-        return res;
-    }
-
-
-    public static String deleteNotWords(String input) {
-
-        String[] words = input.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            if (!validateSymbols(words[i]))
-                words[i] = "";
-        }
-
-        String res = "";
-
-        for (String word : words) {
-            res += word;
-
-            if (! word.isEmpty())
-                res += " ";
         }
 
         return res;
