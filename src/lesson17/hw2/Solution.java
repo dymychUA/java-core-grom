@@ -3,7 +3,7 @@ package lesson17.hw2;
 public class Solution {
     public static void main(String[] args) {
 
-        String input = " Test   inputa string1 input demo in ainput in a ";
+        String input = " Test   inputa stringa7 input demo in ainput in a ";
 
         //2
         System.out.println(maxWord(input));
@@ -53,7 +53,7 @@ public class Solution {
         char[] arr = input.toCharArray();
 
         for (char symbol : arr) {
-            if(!Character.isLetter(symbol))
+            if(!Character.isLetterOrDigit(symbol))
                 return false;
         }
 
