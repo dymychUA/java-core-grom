@@ -12,9 +12,12 @@ public class Solution {
     //1
     public static int countWords(String input) {
 
+        if (input.equals(""))
+            return 0;
+
         int res = 0;
 
-        String[] words = input.trim().split(" ");
+        String[] words = input.split(" ");
 
         for (String word : words) {
             if (validateSymbols(word))
@@ -26,7 +29,10 @@ public class Solution {
 
     public static boolean validateSymbols(String input) {
 
-        char[] arr = input.trim().toCharArray();
+        if (input.equals(""))
+            return false;
+
+        char[] arr = input.toCharArray();
 
         for (char symbol : arr) {
             if(!Character.isLetter(symbol))
