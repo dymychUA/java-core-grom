@@ -16,8 +16,8 @@ public class Solution {
 
         String[] words = input.split(" ");
 
-        for (int i = 0; i < words.length; i++) {
-            if (validateSymbols(words[i]))
+        for (String word : words) {
+            if (validateSymbols(word))
                 res++;
         }
 
