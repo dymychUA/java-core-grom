@@ -47,6 +47,9 @@ public class Solution {
 
     public static boolean validateSymbolsWithDigits(String input) {
 
+        if (input.trim().isEmpty())
+            return false;
+
         char[] arr = input.toCharArray();
 
         for (char symbol : arr) {
