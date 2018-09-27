@@ -95,7 +95,7 @@ public class Solution {
         for (String domain : domains)
             domainName = domainName.replace(domain, "");
 
-        return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbols(domainName);
+        return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbolsWithDigits(domainName);
     }
 
 
@@ -190,6 +190,18 @@ public class Solution {
             if (input.contains(symbol))
                 return false;
         }*/
+
+        return true;
+    }
+
+    public static boolean validateSymbolsWithDigits(String input) {
+
+        char[] arr = input.toCharArray();
+
+        for (char symbol : arr) {
+            if(!Character.isLetterOrDigit(symbol))
+                return false;
+        }
 
         return true;
     }
