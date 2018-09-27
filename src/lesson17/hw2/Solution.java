@@ -16,7 +16,7 @@ public class Solution {
     public static String maxWord(String input) {
 
         if (input.isEmpty())
-            return "";
+            return null;
 
         String[] words = input.trim().split(" ");
         String res = words[0];
@@ -32,7 +32,7 @@ public class Solution {
     public static String minWord(String input) {
 
         if (input.isEmpty())
-            return "";
+            return null;
 
         String[] words = input.trim().split(" ");
         String res = words[0];
