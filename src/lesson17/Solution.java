@@ -33,7 +33,7 @@ public class Solution {
         if (input.equals(""))
             return "";
 
-        String[] words = input.split(" ");
+        String[] words = deleteNotWords(input).split(" ");
         String res = words[0];
 
         for (String word : words) {
@@ -49,7 +49,7 @@ public class Solution {
         if (input.equals(""))
             return "";
 
-        String[] words = input.split(" ");
+        String[] words = deleteNotWords(input).split(" ");
         String res = words[0];
 
         for (String word : words) {
