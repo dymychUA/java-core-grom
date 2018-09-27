@@ -68,6 +68,9 @@ public class Solution {
 
     public static boolean validateSymbols(String input) {
 
+        if (input.equals(""))
+            return false;
+
         char[] arr = input.toCharArray();
 
         for (char symbol : arr) {
