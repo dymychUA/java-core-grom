@@ -19,11 +19,15 @@ public class Solution {
             return null;
 
         String[] words = input.trim().split(" ");
-        String res = words[0];
+        String res = null;
 
         for (String word : words) {
-            if (validateSymbols(word) && res.length() < word.length())
-                res = word;
+            if (validateSymbols(word)) {
+                if (res == null)
+                    res = word;
+                if (res.length() < word.length())
+                    res = word;
+            }
         }
 
         return res;
@@ -35,11 +39,15 @@ public class Solution {
             return null;
 
         String[] words = input.trim().split(" ");
-        String res = words[0];
+        String res = null;
 
         for (String word : words) {
-            if (validateSymbols(word) && res.length() > word.length())
-                res = word;
+            if (validateSymbols(word)) {
+                if (res == null)
+                    res = word;
+                if (res.length() > word.length())
+                    res = word;
+            }
         }
 
         return res;
