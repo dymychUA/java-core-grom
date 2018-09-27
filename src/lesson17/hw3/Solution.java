@@ -4,7 +4,7 @@ public class Solution {
     public static void main(String[] args) {
 
         String input = " Test       input string   input  demo in  input   i#n  in in   ";
-        String input2 = " lk34 sdf( *()_ sd;f   789 -   ";
+        String input2 = " lk34 sdf( *()_ sd;f   789 -   789    ";
 
         //3
         System.out.println(mostCountedWord(input));
@@ -18,20 +18,24 @@ public class Solution {
         if (input.trim().isEmpty())
             return null;
 
-        String[] words = deleteNotWords(deleteDuplicates(input.trim())).split(" ");
+        String[] words = deleteDuplicates(input.trim()).split(" ");
         if (words.length == 0)
             return null;
 
         int[] counters = countDuplicates(input, words);
 
-        int maxIndex = 0;
-        int maxValue = counters[0];
+        int maxIndex = -1;
+        int maxValue = -1;
+
         for (int i = 0; i < counters.length; i++) {
-            if (counters[i] > maxValue) {
+            if (counters[i] != 0 && counters[i] > maxValue) {
                 maxIndex = i;
                 maxValue = counters[i];
             }
         }
+
+        if (maxIndex == -1)
+            return null;
 
         return words[maxIndex];
     }
@@ -44,7 +48,7 @@ public class Solution {
 
         for (String string : strings) {
             for (int i = 0; i < words.length; i++) {
-                if (string.equals(words[i]))
+                if (validateSymbols(words[i]) && string.equals(words[i]))
                     res[i]++;
             }
         }
@@ -60,26 +64,6 @@ public class Solution {
                 if (words[i].equals(words[j]))
                     words[j] = "";
             }
-        }
-
-        String res = "";
-
-        for (String word : words) {
-            res += word;
-
-            if (! word.isEmpty())
-                res += " ";
-        }
-
-        return res;
-    }
-
-    public static String deleteNotWords(String input) {
-
-        String[] words = input.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            if (!validateSymbols(words[i]))
-                words[i] = "";
         }
 
         String res = "";
