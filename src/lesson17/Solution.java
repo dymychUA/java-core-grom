@@ -86,7 +86,7 @@ public class Solution {
     //4
     public static boolean validate(String address) {
 
-        String[] protocols = {"http://", "https://"};
+        String[] protocols = {"http://", "https://", "http://www.", "https://www."};
         String[] domains = {".com", ".org", ".net"};
 
         String domainName = address;
