@@ -13,7 +13,7 @@ public class Solution {
     //3
     public static String mostCountedWord(String input) {
 
-        if (input == null || input.equals(""))
+        if (input.trim().isEmpty())
             return null;
 
         String[] words = deleteNotWords(deleteDuplicates(input)).split(" ");
@@ -90,6 +90,9 @@ public class Solution {
     }
 
     public static boolean validateSymbols(String input) {
+
+        if (input.trim().isEmpty())
+            return false;
 
         char[] arr = input.toCharArray();
 
