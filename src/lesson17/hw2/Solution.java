@@ -15,16 +15,13 @@ public class Solution {
     //2
     public static String maxWord(String input) {
 
-        if (input.trim().isEmpty())
-            return null;
+        input = input.trim();
 
-        String[] words = input.trim().split(" ");
-        String res = null;
+        String[] words = input.split(" ");
+        String res = words[0];
 
         for (String word : words) {
             if (validateSymbols(word)) {
-                if (res == null)
-                    res = word;
                 if (res.length() < word.length())
                     res = word;
             }
@@ -35,16 +32,13 @@ public class Solution {
 
     public static String minWord(String input) {
 
-        if (input.trim().isEmpty())
-            return null;
+        input = input.trim();
 
-        String[] words = input.trim().split(" ");
-        String res = null;
+        String[] words = input.split(" ");
+        String res = words[0];
 
         for (String word : words) {
             if (validateSymbols(word)) {
-                if (res == null)
-                    res = word;
                 if (res.length() > word.length())
                     res = word;
             }
@@ -55,16 +49,11 @@ public class Solution {
 
     public static boolean validateSymbols(String input) {
 
-        if (input.isEmpty())
-            return false;
-
-        char[] arr = input.toCharArray();
-
-        for (char symbol : arr) {
+        for (char symbol : input.toCharArray()) {
             if(!Character.isLetter(symbol))
                 return false;
         }
 
-        return true;
+        return !input.isEmpty();
     }
 }
