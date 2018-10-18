@@ -5,6 +5,8 @@ public class Solution {
 
         String input = " Test         inputa stringa7 input demo in ainput in a4 ";
 
+        input = "         a2        ";
+
         //2
         System.out.println(maxWord(input));
         System.out.println(minWord(input));
@@ -18,7 +20,7 @@ public class Solution {
         input = input == null ? "" : input.trim();
 
         String[] words = input.split(" ");
-        String res = words[0];
+        String res = "";
 
         for (String word : words) {
             if (validateSymbols(word)) {
@@ -35,7 +37,7 @@ public class Solution {
         input = input == null ? "" : input.trim();
 
         String[] words = input.split(" ");
-        String res = words[0];
+        String res = "";
 
         for (String word : words) {
             if (validateSymbols(word)) {
