@@ -3,7 +3,7 @@ package lesson17.hw2;
 public class Solution {
     public static void main(String[] args) {
 
-        String input = " Test         inputa stringa7 input demo in ainput in a ";
+        String input = " Test         inputa stringa7 input demo in ainput in a4 ";
 
         //2
         System.out.println(maxWord(input));
@@ -15,7 +15,7 @@ public class Solution {
     //2
     public static String maxWord(String input) {
 
-        input = input.trim();
+        input = input == null ? "" : input.trim();
 
         String[] words = input.split(" ");
         String res = words[0];
@@ -32,7 +32,7 @@ public class Solution {
 
     public static String minWord(String input) {
 
-        input = input.trim();
+        input = input == null ? "" : input.trim();
 
         String[] words = input.split(" ");
         String res = words[0];
