@@ -4,7 +4,7 @@ public class Solution {
     public static void main(String[] args) {
 
         String input = " Test       input string   input  demo in  input   i#n  in in   ";
-        String input2 = " lk34 sdf( *()_ sd;f   789 -   789    ";
+        String input2 = " lk34 sdf( *()_ sd;f   789 -   789   ";
 
         //3
         System.out.println(mostCountedWord(input));
@@ -15,10 +15,9 @@ public class Solution {
     //3
     public static String mostCountedWord(String input) {
 
-        if (input.trim().isEmpty())
-            return null;
+        input = input == null ? "" : input.trim();
 
-        String[] words = deleteDuplicates(input.trim()).split(" ");
+        String[] words = deleteDuplicates(input).split(" ");
         if (words.length == 0)
             return null;
 
@@ -34,16 +33,15 @@ public class Solution {
             }
         }
 
-        if (maxIndex == -1)
-            return null;
-
-        return words[maxIndex];
+        return (maxIndex == -1) ? null : words[maxIndex];
     }
 
 
     public static int[] countDuplicates(String input, String[] words) {
 
-        String[] strings = input.trim().split(" ");
+        input = input == null ? "" : input.trim();
+
+        String[] strings = input.split(" ");
         int[] res = new int[words.length];
 
         for (String string : strings) {
@@ -80,17 +78,12 @@ public class Solution {
 
     public static boolean validateSymbols(String input) {
 
-        if (input.trim().isEmpty())
-            return false;
-
-        char[] arr = input.toCharArray();
-
-        for (char symbol : arr) {
+        for (char symbol : input.toCharArray()) {
             if(!Character.isLetter(symbol))
                 return false;
         }
 
-        return true;
+        return !input.isEmpty();
     }
 
 }
