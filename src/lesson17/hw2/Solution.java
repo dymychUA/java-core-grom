@@ -3,7 +3,7 @@ package lesson17.hw2;
 public class Solution {
     public static void main(String[] args) {
 
-        String input = " Test   inputa stringa7 input demo in ainput in a ";
+        String input = " Test         inputa stringa7 input demo in ainput in a ";
 
         //2
         System.out.println(maxWord(input));
@@ -27,7 +27,7 @@ public class Solution {
             }
         }
 
-        return res;
+        return res.isEmpty() ? null : res;
     }
 
     public static String minWord(String input) {
@@ -44,7 +44,7 @@ public class Solution {
             }
         }
 
-        return res;
+        return res.isEmpty() ? null : res;
     }
 
     public static boolean validateSymbols(String input) {
