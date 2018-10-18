@@ -16,10 +16,18 @@ public class Solution {
         String[] domains = {".com", ".org", ".net"};
 
         String domainName = address;
-        for (String protocol : protocols)
+        for (String protocol : protocols) {
             domainName = domainName.replace(protocol, "");
-        for (String domain : domains)
+            if (domainName.length() != address.length())
+                break;
+        }
+
+        String addressWithDomain = domainName;
+        for (String domain : domains) {
             domainName = domainName.replace(domain, "");
+            if (domainName.length() != addressWithDomain.length())
+                break;
+        }
 
         return validateProtocol(address, protocols) && validateDomains(address, domains) && validateSymbolsWithDigits(domainName);
     }
