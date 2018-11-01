@@ -17,15 +17,15 @@ public class Solution {
 
         String domainName = address;
         for (String protocol : protocols) {
-            domainName = domainName.replace(protocol, "");
-            if (domainName.length() != address.length())
+            domainName = domainName.replaceFirst(protocol, "");
+            if (!domainName.equals(address))
                 break;
         }
 
         String addressWithDomain = domainName;
         for (String domain : domains) {
-            domainName = domainName.replace(domain, "");
-            if (domainName.length() != addressWithDomain.length())
+            domainName = domainName.replaceFirst(domain, "");
+            if (!domainName.equals(addressWithDomain))
                 break;
         }
 

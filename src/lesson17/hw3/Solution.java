@@ -1,9 +1,12 @@
 package lesson17.hw3;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Solution {
     public static void main(String[] args) {
 
-        String input = " Test       input string   input  demo in  input   i#n  in in   ";
+        String input = " Test       input string in  input  demo  input   i#n  in in   ";
         String input2 = " lk34 sdf( *()_ sd;f   789 -   789   ";
 
         //3
@@ -15,65 +18,30 @@ public class Solution {
     //3
     public static String mostCountedWord(String input) {
 
-        input = input == null ? "" : input.trim();
-
-        String[] words = deleteDuplicates(input).split(" ");
-        if (words.length == 0)
+        if (input.isEmpty()) {
             return null;
-
-        int[] counters = countDuplicates(input, words);
-
-        int maxIndex = -1;
-        int maxValue = -1;
-
-        for (int i = 0; i < counters.length; i++) {
-            if (counters[i] != 0 && counters[i] > maxValue) {
-                maxIndex = i;
-                maxValue = counters[i];
-            }
         }
-
-        return (maxIndex == -1) ? null : words[maxIndex];
-    }
-
-
-    public static int[] countDuplicates(String input, String[] words) {
-
-        input = input == null ? "" : input.trim();
-
-        String[] strings = input.split(" ");
-        int[] res = new int[words.length];
-
-        for (String string : strings) {
-            for (int i = 0; i < words.length; i++) {
-                if (validateSymbols(words[i]) && string.equals(words[i]))
-                    res[i]++;
-            }
-        }
-
-        return res;
-    }
-
-    public static String deleteDuplicates(String input) {
 
         String[] words = input.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            for (int j = i + 1; j < words.length; j++) {
-                if (words[i].equals(words[j]))
-                    words[j] = "";
+
+        int maxCount = 0;
+        String mostFrequent = null;
+
+        for (String word : words) {
+            int count = 0;
+            for (String item : words) {
+                if (word.equals(item) && word.length() > 0 && validateSymbols(item)) {
+                    count++;
+                }
+            }
+
+            if (count > maxCount) {
+                maxCount = count;
+                mostFrequent = word;
             }
         }
 
-        String res = "";
-
-        for (String word : words) {
-            res += word;
-
-            if (! word.isEmpty())
-                res += " ";
-        }
-
-        return res;
+        return mostFrequent;
     }
 
     public static boolean validateSymbols(String input) {
