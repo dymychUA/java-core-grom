@@ -1,6 +1,6 @@
 package lesson19;
 
-public class ThrowExmple {
+public class ThrowExample {
 
     private static String[] array = {"test", "test1", "tesqwd", null, "adssdf", "sdfsdf"};
 
