@@ -71,7 +71,7 @@ public class Controller {
     private int findFileInStorage(Storage storage, File file) {
         int i = 0;
         for (File storageFile : storage.getFiles()) {
-            if (storageFile != null && file.equals(storageFile)) {
+            if (storageFile != null && storageFile.equals(file)) {
                 return i;
             }
             i++;
