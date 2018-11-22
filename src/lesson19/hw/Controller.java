@@ -26,6 +26,8 @@ public class Controller {
                 return;
             }
         }
+
+        throw new Exception("File id = '" + file.getId() + "' was not added to the Storage id = '" + storage.getId() + "'. No free space.");
     }
 
     public void delete(Storage storage, File file) throws Exception {
