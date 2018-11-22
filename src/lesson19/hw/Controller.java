@@ -74,6 +74,10 @@ public class Controller {
             throw new Exception("File id = '" + id + "' was not found in the Storage id = '" + storageFrom.getId() + "'");
         }
 
+        if (!canBeDeleted(storageFrom, file) || !canBePutted(storageTo, file) || !checkFreeSpase(storageTo, new File[] {file})) {
+            throw new Exception("File with id '" + id + "' can not be transfered from Storage id '" + storageFrom.getId() + "' to Storage id '" + storageTo.getId() + "'");
+        }
+
         try {
             put(storageTo, file);
             delete(storageFrom, file);
