@@ -4,14 +4,13 @@ import java.util.Arrays;
 
 public class Storage {
     private long id;
-    private File[] files;
+    private File[] files = new File[10];
     private String[] formatsSupported;
     private String storageCountry;
     private long storageSize;
 
     public Storage(long id, String[] formatsSupported, String storageCountry, long storageSize) {
         this.id = id;
-        this.files = new File[10];
         this.formatsSupported = formatsSupported;
         this.storageCountry = storageCountry;
         this.storageSize = storageSize;

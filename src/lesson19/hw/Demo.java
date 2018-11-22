@@ -14,8 +14,8 @@ public class Demo {
         Controller controller = new Controller();
 
         Storage officeStorage = new Storage(111, new String[] {"docx", "xlsx", "pptx"}, "Ukraine", 5000);
-        Storage imageStorage = new Storage(222, new String[] {"jpg", "gif", "png"}, "Ukraine", 15000);
-        Storage dbStorage = new Storage(333, new String[] {"mdb", "mdf", "sdf"}, "Ukraine", 25000);
+        Storage imageStorage = new Storage(222, new String[] {"jpg", "gif", "png"}, "USA", 15000);
+        Storage dbStorage = new Storage(333, new String[] {"mdb", "mdf", "sdf"}, "U.K.", 25000);
 
         try {
             File file1 = new File(123, "f1", "xlsx", 500);
