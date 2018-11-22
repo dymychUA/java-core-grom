@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Storage {
     private long id;
-    private File[] files = new File[10];
+    private File[] files = new File[3];
     private String[] formatsSupported;
     private String storageCountry;
     private long storageSize;

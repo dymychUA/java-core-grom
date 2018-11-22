@@ -30,6 +30,9 @@ public class Demo {
             File file8 = new File(890, "f8", "mdf", 7500);
             File file9 = new File(901, "f9", "sdf", 4500);
 
+            File file99 = new File(999, "f9", "sdf", 1);
+
+
             controller.put(officeStorage, file1);
             controller.put(officeStorage, file2);
             controller.put(officeStorage, file3);
@@ -41,6 +44,8 @@ public class Demo {
             controller.put(dbStorage, file7);
             controller.put(dbStorage, file8);
             controller.put(dbStorage, file9);
+
+            controller.put(dbStorage, file99);
 
             System.out.println(officeStorage);
             System.out.println(imageStorage);
