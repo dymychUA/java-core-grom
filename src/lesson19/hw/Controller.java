@@ -3,18 +3,17 @@ package lesson19.hw;
 import java.util.Arrays;
 
 public class Controller {
-    public void put(Storage storage, File file) throws Exception {
-        if (!storage.checkFileFormat(file.getFormat())) {
+    public File put(Storage storage, File file) throws Exception {
+        if (!checkFileFormat(storage, file)) {
             throw new Exception("File format not supported! The Storage id = '" + storage.getId() + "'; File id = '" + file.getId() + "'");
         }
 
-        if (storage.getFileById(file.getId()) != null) {
+        if (checkIfExists(storage, file)) {
             throw new Exception("File with id = '" + file.getId() + "' is already present in the Storage id = '" + storage.getId() + "'");
         }
 
-        long emptySpace = storage.getStorageSize() - getStorageUsedSize(storage);
-        if (emptySpace < file.getSize()) {
-            throw new Exception("There is no empty space (" + emptySpace + " KB.) in the Storage id = '" + storage.getId() + "'; File id = '" + file.getId() + "'; file size = '" + file.getSize() + "' KB.");
+        if (!checkFreeSpase(storage, new File[] {file})) {
+            throw new Exception("There is no empty space in the Storage id = '" + storage.getId() + "'; File id = '" + file.getId() + "'; file size = '" + file.getSize() + "'");
         }
 
         File[] files = storage.getFiles();
@@ -23,7 +22,7 @@ public class Controller {
             if (files[i] == null) {
                 files[i] = file;
                 System.out.println("File id = '" + file.getId() + "' was added to the Storage id = '" + storage.getId() + "'");
-                return;
+                return file;
             }
         }
 
@@ -32,17 +31,32 @@ public class Controller {
 
     public void delete(Storage storage, File file) throws Exception {
 
-        int fileIndex = findFileInStorage(storage, file);
-
-        if (fileIndex == -1) {
+        if (!checkIfExists(storage, file)) {
             throw new Exception("File id = '" + file.getId() + "' was not found in the Storage id = '" + storage.getId() + "'");
         }
 
-        storage.getFiles()[fileIndex] = null;
-        System.out.println("File id = '" + file.getId() + "' was deleted from the Storage id = '" + storage.getId() + "'");
+        File[] files = storage.getFiles();
+        for (int i = 0; i < files.length; i++) {
+            if (files[i] != null && files[i].equals(file)) {
+                files[i] = null;
+                System.out.println("File id = '" + file.getId() + "' was deleted from the Storage id = '" + storage.getId() + "'");
+                return;
+            }
+        }
+
+        throw new Exception("File id = '" + file.getId() + "' was not found in the Storage id = '" + storage.getId() + "'");
     }
 
     public void transferAll(Storage storageFrom, Storage storageTo) throws Exception {
+
+        if (!checkFreeSpase(storageTo, storageFrom.getFiles()))
+            throw new Exception("Storage id '" + storageFrom.getId() + "' can not be transfered to Storage id '" + storageTo.getId() + "'");
+
+        for (File storageFile : storageFrom.getFiles()) {
+            if (!canBeDeleted(storageFrom, storageFile) || !canBePutted(storageTo, storageFile))
+                throw new Exception("Storage id '" + storageFrom.getId() + "' can not be transfered to Storage id '" + storageTo.getId() + "'");
+        }
+
         try {
             for (File storageFile : storageFrom.getFiles()) {
                 transferFile(storageFrom, storageTo, storageFile.getId());
@@ -68,16 +82,46 @@ public class Controller {
         }
     }
 
-    private int findFileInStorage(Storage storage, File file) {
-        int i = 0;
-        for (File storageFile : storage.getFiles()) {
-            if (storageFile != null && storageFile.equals(file)) {
-                return i;
-            }
-            i++;
+    private boolean checkFreeSpase(Storage storage, File[] files) {
+        int filesCount = 0;
+        long fileSize = 0;
+
+        for (File file : files) {
+            if (file != null)
+                fileSize += file.getSize();
+                filesCount++;
         }
 
-        return -1;
+        return ((storage.getStorageSize() - getStorageUsedSize(storage)) >= fileSize && filesCount <= getStorageFreeCells(storage));
+    }
+
+    private boolean checkIfExists(Storage storage, File file) {
+        return storage.getFileById(file.getId()) != null;
+    }
+
+    private boolean checkFileFormat(Storage storage, File file) {
+
+        String format = file.getFormat();
+
+        for (String fileFormat : storage.getFormatsSupported()) {
+            if (fileFormat.equals(format))
+                return true;
+        }
+
+        return false;
+    }
+
+    private boolean canBePutted(Storage storage, File file) {
+        return checkFileFormat(storage, file) && !checkIfExists(storage, file);
+    }
+
+    private boolean canBeDeleted(Storage storage, File file) {
+        for (File storageFile : storage.getFiles()) {
+            if (storageFile != null && storageFile.equals(file))
+                return true;
+        }
+
+        return false;
     }
 
     private long getStorageUsedSize(Storage storage) {
@@ -90,5 +134,16 @@ public class Controller {
         }
 
         return size;
+    }
+
+    private int getStorageFreeCells(Storage storage) {
+        int freeCells = 0;
+
+        for (File file : storage.getFiles()) {
+            if (file == null)
+                freeCells++;
+        }
+
+        return freeCells;
     }
 }

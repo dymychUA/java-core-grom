@@ -55,16 +55,6 @@ public class Storage {
         return null;
     }
 
-    public boolean checkFileFormat(String format) {
-
-        for (String fileFormat : formatsSupported) {
-            if (format.equals(fileFormat))
-                return true;
-        }
-
-        return false;
-    }
-
     @Override
     public String toString() {
         return "Storage{" +

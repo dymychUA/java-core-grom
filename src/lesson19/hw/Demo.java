@@ -45,7 +45,11 @@ public class Demo {
             controller.put(dbStorage, file8);
             controller.put(dbStorage, file9);
 
-            controller.put(dbStorage, file99);
+            try {
+                controller.put(dbStorage, file99);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
 
             System.out.println(officeStorage);
             System.out.println(imageStorage);
