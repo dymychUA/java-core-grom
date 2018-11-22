@@ -9,6 +9,8 @@ public class Storage {
     private String storageCountry;
     private long storageSize;
 
+    public Storage() {}
+
     public Storage(long id, String[] formatsSupported, String storageCountry, long storageSize) {
         this.id = id;
         this.formatsSupported = formatsSupported;
