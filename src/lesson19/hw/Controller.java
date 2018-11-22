@@ -27,7 +27,7 @@ public class Controller {
             }
         }
 
-        throw new Exception("File id = '" + file.getId() + "' was not added to the Storage id = '" + storage.getId() + "'. No free space.");
+        throw new Exception("File id = '" + file.getId() + "' was not added to the Storage id = '" + storage.getId() + "'. No free space in the storage.");
     }
 
     public void delete(Storage storage, File file) throws Exception {
@@ -71,7 +71,7 @@ public class Controller {
     private int findFileInStorage(Storage storage, File file) {
         int i = 0;
         for (File storageFile : storage.getFiles()) {
-            if (file.equals(storageFile)) {
+            if (storageFile != null && file.equals(storageFile)) {
                 return i;
             }
             i++;
