@@ -18,6 +18,14 @@ public class Storage {
         this.storageSize = storageSize;
     }
 
+    public Storage(long id, File[] files, String[] formatsSupported, String storageCountry, long storageSize) {
+        this.id = id;
+        this.files = files;
+        this.formatsSupported = formatsSupported;
+        this.storageCountry = storageCountry;
+        this.storageSize = storageSize;
+    }
+
     public long getId() {
         return id;
     }
