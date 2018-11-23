@@ -55,15 +55,12 @@ public class TransactionDAO {
         }
     }
 
-    Transaction[] transactionList() throws BadRequestException {
+    Transaction[] transactionList() {
         int count = 0;
         for (Transaction transaction : transactions) {
             if (transaction != null)
                 count++;
         }
-
-        if (count == 0)
-            throw new BadRequestException("No transactions");
 
         Transaction[] result = new Transaction[count];
         int index = 0;

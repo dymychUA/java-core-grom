@@ -10,7 +10,7 @@ public class Controller {
         return transactionDAO.save(transaction);
     }
 
-    Transaction[] transactionList() throws BadRequestException {
+    Transaction[] transactionList() {
         return transactionDAO.transactionList();
     }
 
