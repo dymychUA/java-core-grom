@@ -30,22 +30,23 @@ public class TransactionDAO {
 
     private void validate(Transaction transaction) throws BadRequestException {
 
-        if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount()) {
+        int sum = transaction.getAmount();
+
+        if (sum > utils.getLimitSimpleTransactionAmount()) {
             throw new LimitExceeded("Transaction limit exceeded " + transaction.getId() + ". Can't be saved");
         }
 
-        int sum = 0;
-        int count = 0;
+        int count = 1;
         for (Transaction tr : getTransactionsPerDay(transaction.getDateCreated())) {
             sum += tr.getAmount();
             count++;
         }
 
-        if ((sum + transaction.getAmount()) > utils.getLimitTransactionsPerDayAmount()) {
+        if (sum > utils.getLimitTransactionsPerDayAmount()) {
             throw new LimitExceeded("Transaction limit per day amount exceeded " + transaction.getId() + ". Can't be saved");
         }
 
-        if ((count + 1) > utils.getLimitTransactionsPerDayCount()) {
+        if (count > utils.getLimitTransactionsPerDayCount()) {
             throw new LimitExceeded("Transaction limit per day count exceeded " + transaction.getId() + ". Can't be saved");
         }
 
