@@ -56,12 +56,27 @@ public class TransactionDAO {
     }
 
     Transaction[] transactionList() {
-        return transactions;
+        int count = 0;
+        for (Transaction transaction : transactions) {
+            if (transaction != null)
+                count++;
+        }
+
+        Transaction[] result = new Transaction[count];
+        int index = 0;
+        for (Transaction transaction : transactions) {
+            if (transaction != null) {
+                result[index] = transaction;
+                index++;
+            }
+        }
+
+        return result;
     }
 
     Transaction[] transactionList(String city) throws BadRequestException {
 
-        if (city.equals(""))
+        if (!validateCity(city))
             throw new BadRequestException("City can't be empty");
 
         int count = 0;
