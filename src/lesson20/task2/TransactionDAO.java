@@ -145,6 +145,7 @@ public class TransactionDAO {
 
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
 
         int count = 0;
         for (Transaction transaction : transactions) {
@@ -152,8 +153,9 @@ public class TransactionDAO {
                 calendar.setTime(transaction.getDateCreated());
                 int trMonth = calendar.get(Calendar.MONTH);
                 int trDay = calendar.get(Calendar.DAY_OF_MONTH);
+                int trYear = calendar.get(Calendar.YEAR);
 
-                if (trMonth == month && trDay == day)
+                if (trMonth == month && trDay == day && year == trYear)
                     count++;
             }
         }
@@ -165,8 +167,9 @@ public class TransactionDAO {
                 calendar.setTime(transaction.getDateCreated());
                 int trMonth = calendar.get(Calendar.MONTH);
                 int trDay = calendar.get(Calendar.DAY_OF_MONTH);
+                int trYear = calendar.get(Calendar.YEAR);
 
-                if (trMonth == month && trDay == day) {
+                if (trMonth == month && trDay == day && year == trYear) {
                     result[index] = transaction;
                     index++;
                 }
