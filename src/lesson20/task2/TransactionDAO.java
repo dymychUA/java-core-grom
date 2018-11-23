@@ -77,7 +77,7 @@ public class TransactionDAO {
     Transaction[] transactionList(String city) throws BadRequestException {
 
         if (!validateCity(city))
-            throw new BadRequestException("City can't be empty");
+            throw new BadRequestException("City is not valid");
 
         int count = 0;
         for (Transaction transaction : transactions) {
