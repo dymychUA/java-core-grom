@@ -40,6 +40,12 @@ public class Demo {
         }
 
         try {
+            System.out.println(Arrays.toString(controller.transactionList("Odessa")));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
             controller.save(tr3);
         } catch (Exception e) {
             System.out.println(e.getMessage());
