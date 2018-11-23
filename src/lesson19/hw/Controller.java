@@ -21,7 +21,7 @@ public class Controller {
         for (int i = 0; i < files.length; i++) {
             if (files[i] == null) {
                 files[i] = file;
-                System.out.println("File id = '" + file.getId() + "' was added to the Storage id = '" + storage.getId() + "'");
+                //System.out.println("File id = '" + file.getId() + "' was added to the Storage id = '" + storage.getId() + "'");
                 return file;
             }
         }
@@ -39,7 +39,7 @@ public class Controller {
         for (int i = 0; i < files.length; i++) {
             if (files[i] != null && files[i].equals(file)) {
                 files[i] = null;
-                System.out.println("File id = '" + file.getId() + "' was deleted from the Storage id = '" + storage.getId() + "'");
+                //System.out.println("File id = '" + file.getId() + "' was deleted from the Storage id = '" + storage.getId() + "'");
                 return;
             }
         }
