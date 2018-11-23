@@ -12,11 +12,11 @@ public class Controller {
         return transactionDAO.transactionList();
     }
 
-    Transaction[] transactionList(String city) {
+    Transaction[] transactionList(String city) throws Exception {
         return transactionDAO.transactionList(city);
     }
 
-    Transaction[] transactionList(int amount) {
+    Transaction[] transactionList(int amount) throws Exception {
         return transactionDAO.transactionList(amount);
     }
 
