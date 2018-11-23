@@ -28,7 +28,7 @@ public class TransactionDAO {
         throw new InternalServerException("Not enough space to save transaction");
     }
 
-    private void validate(Transaction transaction) throws Exception {
+    private void validate(Transaction transaction) throws BadRequestException {
 
         if (transaction.getAmount() > utils.getLimitSimpleTransactionAmount()) {
             throw new LimitExceeded("Transaction limit exceeded " + transaction.getId() + ". Can't be saved");
@@ -58,7 +58,10 @@ public class TransactionDAO {
         return transactions;
     }
 
-    Transaction[] transactionList(String city) {
+    Transaction[] transactionList(String city) throws BadRequestException {
+
+        if (city.equals(""))
+            throw new BadRequestException("City can't be empty");
 
         int count = 0;
         for (Transaction transaction : transactions) {
@@ -82,7 +85,10 @@ public class TransactionDAO {
         return result;
     }
 
-    Transaction[] transactionList(int amount) {
+    Transaction[] transactionList(int amount) throws BadRequestException {
+
+        if (amount == 0)
+            throw new BadRequestException("Amount can't be zero");
 
         int count = 0;
         for (Transaction transaction : transactions) {
