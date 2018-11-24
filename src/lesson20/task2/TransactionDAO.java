@@ -25,7 +25,7 @@ public class TransactionDAO {
             index++;
         }
 
-        throw new InternalServerException("Not enough space to save transaction");
+        throw new InternalServerException("Not enough space to save transaction id: " + transaction.getId());
     }
 
     private void validate(Transaction transaction) throws BadRequestException {
@@ -76,8 +76,10 @@ public class TransactionDAO {
 
     Transaction[] transactionList(String city) throws BadRequestException {
 
+        /*
         if (!validateCity(city))
             throw new BadRequestException("City is not valid");
+        */
 
         int count = 0;
         for (Transaction transaction : transactions) {
