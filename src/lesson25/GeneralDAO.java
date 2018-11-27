@@ -1,8 +1,10 @@
 package lesson25;
 
-public class GeneralDAO {
+public class GeneralDAO<T> {
 
-    private void print (Order order) {
+    private T[] dBase = (T[])new Object[10];
+
+    private void print(Order order) {
         System.out.println("order is:" + order.toString());
     }
 
@@ -20,4 +22,22 @@ public class GeneralDAO {
         }
     }
 
+    public T save(T t) throws Exception {
+
+        int index = 0;
+
+        for (T entity : dBase) {
+            if (entity == null) {
+                dBase[index] = t;
+                return dBase[index];
+            }
+            index++;
+        }
+
+        throw new Exception("No enough space in DBase");
+    }
+
+    public T[] getAll() {
+        return dBase;
+    }
 }
