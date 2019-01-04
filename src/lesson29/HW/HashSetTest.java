@@ -14,6 +14,7 @@ public class HashSetTest {
 
         Set<Order> set = new HashSet<>();
         Set<Order> set1 = new HashSet<>();
+        Set<Order> set2 = new HashSet<>();
 
         Order order1 = new Order(1, 1000, "UAH", "Black Box", "Rozetka");
         Order order2 = new Order(2, 2000, "UAH", "White Box", "Eldorado");
@@ -25,6 +26,9 @@ public class HashSetTest {
             set.add(new Order(i, 100 * i, "UAH", goods[i], shops[i]));
         }
 
+        set2.add(order1);
+        set2.add(order2);
+
         set1.add(order1);
         set1.add(order2);
         set1.add(order3);
@@ -32,7 +36,7 @@ public class HashSetTest {
         set1.add(order5);
 
         set.addAll(set1);
-        set.retainAll(set1);
+        set.retainAll(set2);
 
         set.add(order2);
         set.remove(1);
@@ -47,6 +51,10 @@ public class HashSetTest {
         set.addAll(set1);
         size = set.size();
         set.add(order1);
+
+        for (Order order : set) {
+            order.setPrice((int)(order.getPrice() * 1.15));
+        }
 
         return set;
     }
