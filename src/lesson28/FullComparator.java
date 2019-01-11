@@ -6,6 +6,13 @@ public class FullComparator implements Comparator<Capability> {
 
     @Override
     public int compare(Capability o1, Capability o2) {
+
+        if (o1 == null || o2 == null) {
+            int int_o1 = o1 == null ? 0 : 1;
+            int int_o2 = o2 == null ? 0 : 1;
+            return int_o1 - int_o2;
+        }
+
         if (!o1.getChannelName().equals(o2.getChannelName()))
             return o1.getChannelName().compareTo(o2.getChannelName());
 
