@@ -26,4 +26,16 @@ public class Transaction implements Comparable<Transaction> {
     public int compareTo(Transaction tr) {
         return tr.dateCreated.compareTo(this.dateCreated);
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", dateCreated=" + dateCreated +
+                ", dateConfirmed=" + dateConfirmed +
+                ", type=" + type +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

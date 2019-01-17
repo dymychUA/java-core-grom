@@ -15,10 +15,7 @@ public class UkrainianBankSystem implements BankSystem {
         if (!checkWithdraw(user, amount))
             return;
         withdrawFromUserBalance(user, amount);
-
-        Random random = new Random();
-        Transaction tr = new Transaction(random.nextInt(), new Date(), null, TransactionType.WITHDRAWAL, amount, "sdsdc");
-        transactions.add(tr);
+        createAndSaveTransaction(new Date(), TransactionType.WITHDRAWAL, amount, "sdsdc");
     }
 
     @Override
@@ -26,6 +23,8 @@ public class UkrainianBankSystem implements BankSystem {
         if (!checkFunding(user, amount))
             return;
         user.setBalance(user.getBalance() + amount);
+
+        createAndSaveTransaction(new Date(), TransactionType.FUNDING, amount, "sdsdc");
     }
 
     @Override
@@ -43,6 +42,7 @@ public class UkrainianBankSystem implements BankSystem {
         if (!checkFunding(user, user.getSalary()))
             return;
         user.setBalance(user.getBalance() + user.getSalary());
+        createAndSaveTransaction(new Date(), TransactionType.SALARY_INCOME, user.getSalary(), "sdsdc");
     }
 
     private boolean checkFunding(User user, int amount) {
@@ -72,5 +72,16 @@ public class UkrainianBankSystem implements BankSystem {
 
     private void withdrawFromUserBalance(User user, int amount) {
         user.setBalance(user.getBalance() - amount - amount * user.getBank().getCommission(amount));
+    }
+
+    private Transaction createAndSaveTransaction(Date dateCreated, TransactionType type, int amount, String descr) {
+        Random random = new Random();
+        Transaction tr = new Transaction(random.nextInt(), dateCreated, null, type, amount, "sdsdc");
+        transactions.add(tr);
+        return tr;
+    }
+
+    public Set<Transaction> getTransactions() {
+        return transactions;
     }
 }
