@@ -7,18 +7,26 @@ public class FullComparator implements Comparator<Capability> {
     @Override
     public int compare(Capability o1, Capability o2) {
 
-        if (o1 == null || o2 == null) {
-            int int_o1 = o1 == null ? 0 : 1;
-            int int_o2 = o2 == null ? 0 : 1;
-            return int_o1 - int_o2;
+        if (compareFields(o1.getChannelName(), o2.getChannelName()) != 0)
+            return compareFields(o1.getChannelName(), o2.getChannelName());
+        else if (compareFields(o1.getFingerprint(), o2.getFingerprint()) != 0)
+            return compareFields(o1.getFingerprint(), o2.getFingerprint());
+
+        return compareFields(o1.getDateCreated(), o2.getDateCreated());
+    }
+
+    private <T extends Comparable<T>> int compareFields(T fieldCap1, T fieldCap2) {
+
+        if (fieldCap1 == null) {
+            return (fieldCap2 == null) ? 0 : 1;
         }
 
-        if (!o1.getChannelName().equals(o2.getChannelName()))
-            return o1.getChannelName().compareTo(o2.getChannelName());
+        if (fieldCap2 == null)
+            return -1;
 
-        if (!o1.getFingerprint().equals(o2.getFingerprint()))
-            return o1.getFingerprint().compareTo(o2.getFingerprint());
+        if (!fieldCap1.equals(fieldCap2))
+            return fieldCap1.compareTo(fieldCap2);
 
-        return (int) -(o1.getDateCreated().getTime() - o2.getDateCreated().getTime());
+        return 0;
     }
 }
