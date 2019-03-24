@@ -1,0 +1,11 @@
+package lesson30.HW;
+
+public enum DepartmentType {
+
+    ADMINISTRATIVE_DEPARTMENT,
+    DEVELOPMENT_DEPARTMENT,
+    FINANCIAL_DEPARTMENT,
+    SALES_DEPARTMENT,
+    DESIGN_DEPARTMENT
+
+}
