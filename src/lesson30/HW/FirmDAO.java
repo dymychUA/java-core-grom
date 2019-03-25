@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class FirmDAO {
 
-    private HashSet<Firm> firms = new HashSet<>();
+    private static HashSet<Firm> firms = new HashSet<>();
 
     public HashSet<Firm> getFirms() {
         return firms;

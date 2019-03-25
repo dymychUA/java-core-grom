@@ -19,7 +19,7 @@ public class Controller {
 
     public List<Employee> employeesByProject(String projectName) {
 
-        if (projectName.isEmpty() || projectName == null)
+        if (projectName == null || projectName.isEmpty())
             return null;
 
         List<Employee> employees = new ArrayList<>();
@@ -44,8 +44,8 @@ public class Controller {
         for (Employee currentEmployee : employeeDAO.getEmployees()) {
             if (employee.equals(currentEmployee)) {
                 projects.addAll(employee.getProjects());
+                break;
             }
-            break;
         }
 
         return projects.size() == 0 ? null : projects;
@@ -61,11 +61,11 @@ public class Controller {
         for (Department currentDepartment : departmentDAO.getDepartments()) {
             if (departmentType.equals(currentDepartment.getType())) {
                 for (Employee currentEmployee : currentDepartment.getEmployees()) {
-                    if (currentEmployee.getProjects().isEmpty())
+                    if (currentEmployee.getProjects().size() == 0)
                         employees.add(currentEmployee);
                 }
+                break;
             }
-            break;
         }
 
         return employees.size() == 0 ? null : employees;
@@ -75,7 +75,7 @@ public class Controller {
         List<Employee> employees = new ArrayList<>();
 
         for (Employee currentEmployee : employeeDAO.getEmployees()) {
-            if (currentEmployee.getProjects().isEmpty())
+            if (currentEmployee.getProjects().size() == 0)
                 employees.add(currentEmployee);
         }
 
@@ -89,12 +89,10 @@ public class Controller {
 
         Set<Employee> employees = new HashSet<>();
 
-        for (Project project : projectDAO.getProjects()) {
-            if (lead.equals(project.getLead())) {
-                for (Employee employee : employeeDAO.getEmployees()) {
-                    if (employee.getProjects().contains(project))
-                        employees.add(employee);
-                }
+        for (Project project : lead.getProjects()) {
+            for (Employee employee : employeeDAO.getEmployees()) {
+                if (employee != lead && employee.getProjects().contains(project))
+                    employees.add(employee);
             }
         }
 
@@ -109,7 +107,10 @@ public class Controller {
         Set<Employee> employees = new HashSet<>();
 
         for (Project project : employee.getProjects()) {
-            employees.add(project.getLead());
+            for (Employee employeeDAO : employeeDAO.getEmployees()) {
+                if (employeeDAO.getPosition() == Position.TEAM_LEAD && employeeDAO.getProjects().contains(project))
+                    employees.add(employeeDAO);
+            }
         }
 
         return employees.size() == 0 ? null : employees;

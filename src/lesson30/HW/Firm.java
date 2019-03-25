@@ -11,6 +11,11 @@ public class Firm {
     private HashSet<Department> departments;
     private HashSet<Customer> customers;
 
+    public Firm(Date dateFounded, String name) {
+        this.dateFounded = dateFounded;
+        this.name = name;
+    }
+
     public Firm(Date dateFounded, String name, HashSet<Department> departments, HashSet<Customer> customers) {
         this.dateFounded = dateFounded;
         this.name = name;

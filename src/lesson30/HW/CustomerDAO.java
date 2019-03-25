@@ -1,10 +1,11 @@
 package lesson30.HW;
 
+import java.util.Collection;
 import java.util.HashSet;
 
 public class CustomerDAO {
 
-    private HashSet<Customer> customers = new HashSet<>();
+    private static HashSet<Customer> customers = new HashSet<>();
 
     public HashSet<Customer> getCustomers() {
         return customers;
@@ -13,6 +14,11 @@ public class CustomerDAO {
     public Customer add(Customer customer) {
         customers.add(customer);
         return customer;
+    }
+
+    public Collection<Customer> add(Collection<Customer> customersCollection) {
+        customers.addAll(customersCollection);
+        return customers;
     }
 
     public void remove(Customer customer) {

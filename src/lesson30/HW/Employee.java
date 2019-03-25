@@ -11,7 +11,7 @@ public class Employee {
     private Date dateHired;
     private Position position;
     private Department department;
-    private HashSet<Project> projects;
+    private HashSet<Project> projects = new HashSet<>();
 
     public Employee(String firstName, String lastName, Date dateHired, Position position, Department department) {
         this.firstName = firstName;

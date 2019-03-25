@@ -6,16 +6,9 @@ public class Project {
 
     private String name;
     private Customer customer;
-    private Employee lead;
 
     public Project(String name, Customer customer) {
         this.name = name;
-        this.customer = customer;
-    }
-
-    public Project(String name, Customer customer, Employee lead) {
-        this.name = name;
-        this.lead = lead;
         this.customer = customer;
     }
 
@@ -27,13 +20,6 @@ public class Project {
         return customer;
     }
 
-    public Employee getLead() {
-        return lead;
-    }
-
-    public void setLead(Employee lead) {
-        this.lead = lead;
-    }
 
     @Override
     public String toString() {
