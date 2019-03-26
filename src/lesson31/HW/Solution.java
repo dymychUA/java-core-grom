@@ -15,7 +15,12 @@ public class Solution {
 
         for (Character symbol : text.toCharArray()) {
             if (Character.isLetter(symbol)) {
-                map.put(symbol, symbolCountInString(text, symbol));
+                if (map.containsKey(symbol)) {
+                    map.put(symbol , map.get(symbol) + 1);
+                } else {
+                    map.put(symbol, 1);
+                }
+
             }
         }
 
@@ -32,33 +37,15 @@ public class Solution {
 
         for (String currentWord : text.split(" ")) {
             if (validateWord(currentWord)) {
-                map.put(currentWord, wordCountInString(text, currentWord));
+                if (map.containsKey(currentWord)) {
+                    map.put(currentWord , map.get(currentWord) + 1);
+                } else {
+                    map.put(currentWord, 1);
+                }
             }
         }
 
         return map;
-    }
-
-    private static int symbolCountInString(String text, Character symbol) {
-        int count = 0;
-
-        for (Character currentSymbol : text.toCharArray()) {
-            if (symbol.equals(currentSymbol))
-                count++;
-        }
-
-        return count;
-    }
-
-    private static int wordCountInString(String text, String word) {
-        int count = 0;
-
-        for (String currentWord : text.split(" ")) {
-            if (word.equals(currentWord))
-                count++;
-        }
-
-        return count;
     }
 
     private static boolean validateWord(String word) {
