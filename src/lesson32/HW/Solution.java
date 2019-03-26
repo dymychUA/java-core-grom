@@ -24,51 +24,45 @@ public class Solution {
             String input = br.readLine();
             String[] numbers = input.split(" ");
 
-            if (validateNumbers(numbers)) {
-                System.out.println(sumOfNumbers(numbers));
-                br.close();
-                reader.close();
+            Integer sum = sumOfNumbers(numbers);
+
+            if (sum != null) {
+                System.out.println(sum);
                 break;
             }
 
             attempt ++;
             if (attempt == 3) {
                 System.out.println("Your numbers are wrong. Number of attempts exceeded");
-                br.close();
-                reader.close();
                 break;
             } else {
                 System.out.println("Your numbers are wrong. You have " + (3 - attempt) + " attempts to try again");
             }
         }
 
+        br.close();
+        reader.close();
+
     }
 
-    private static boolean validateNumbers(String[] numbers) {
+    private static Integer sumOfNumbers(String[] numbers) {
+        int sum = 0;
 
         if (numbers.length != 10) {
-            return false;
+            return null;
         }
 
         try {
             for (String stringNumber : numbers) {
                 int number = Integer.parseInt(stringNumber);
                 if (number > 100) {
-                    return false;
+                    return null;
+                } else {
+                    sum += number;
                 }
             }
         } catch (Exception e) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private static int sumOfNumbers(String[] numbers) {
-        int sum = 0;
-
-        for (String stringNumber : numbers) {
-            sum += Integer.parseInt(stringNumber);
+            return null;
         }
 
         return sum;
